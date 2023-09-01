@@ -42,7 +42,7 @@ if (args.length === 0) {
     const counterValue = parseInt(data) + 1;
     console.log(`Counter value: ${counterValue}`);
     fs.writeFile(filePath, String(counterValue));
-  })
+  });
 } else {
   console.error('Usage: node src/console_script2.js [--sync | --async]');
   process.exit(1); // Exit with an error code
