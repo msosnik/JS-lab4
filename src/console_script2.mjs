@@ -65,7 +65,7 @@ function runShell() {
       console.log(`stdout: ${stdout}`);
       console.error(`stderr: ${stderr}`);
 
-      runShell();
+      runShell(); // Continue to the next command
     });
     rl.close();
   });
