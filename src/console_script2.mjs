@@ -41,9 +41,9 @@ if (args.length === 0) {
     if (err) {
         throw err;
     }    
-    console.log(`Counter value: ${data}`);
-    data = parseInt(data) +1
-    fs.writeFile(filePath, String(data));
+    const counterValue = parseInt(data) + 1;
+    console.log(`Counter value: ${counterValue}`);
+    fs.writeFile(filePath, String(counterValue));
   })
 } else {
   console.error('Usage: node src/console_script2.js [--sync | --async]');
