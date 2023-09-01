@@ -19,24 +19,22 @@ console.clear()
 // Check for command-line options
 const args = argv.slice(2); // Remove the first two elements (node and script path)
 
+if (!fs.existsSync(filePath)) {
+  fs.writeFileSync(filePath, '0');
+}
+
 if (args.length === 0) {
   console.error('No arguments provided. Open shell.');
   runShell();
 } else if (args.includes('--sync')) {
   // The script was invoked with --sync
   console.log('Running in synchronous mode');
-  if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, '0');
-  }
   const counterValue = read_sync() + 1;
   console.log(`Counter value: ${counterValue}`);
   fs.writeFileSync(filePath, String(counterValue));
 } else if (args.includes('--async')) {
   // The script was invoked with --async
   console.log('Running in asynchronous mode');
-  if (!fs.exists(filePath)) {
-    fs.writeFile(filePath, '0');
-  }
   fs.readFile(filePath, 'utf8', (err, data)=> {
     if (err) {
         throw err;
