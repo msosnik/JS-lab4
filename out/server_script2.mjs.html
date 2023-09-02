@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: server_script2.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: server_script2.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * This is a JSDoc comment.
  * @module server_script2
  */
@@ -26,11 +54,11 @@ function read_sync() {
      * @param {IncomingMessage} request - Input stream — contains data received from the browser, e.g,. encoded contents of HTML form fields.
      * @param {ServerResponse} response - Output stream — put in it data that you want to send back to the browser.
      * The answer sent by this stream must consist of two parts: the header and the body.
-     * <ul>
-     *  <li>The header contains, among others, information about the type (MIME) of data contained in the body.
-     *  <li>The body contains the correct data, e.g. a form definition.
-     * </ul>
-     * @author Stanisław Polak <polak@agh.edu.pl>
+     * &lt;ul>
+     *  &lt;li>The header contains, among others, information about the type (MIME) of data contained in the body.
+     *  &lt;li>The body contains the correct data, e.g. a form definition.
+     * &lt;/ul>
+     * @author Stanisław Polak &lt;polak@agh.edu.pl>
 */
 function requestListener(request, response) {
     console.log('--------------------------------------');
@@ -49,7 +77,7 @@ function requestListener(request, response) {
     /* ---------------- */
     /* Route "GET('/')" */
     /* ---------------- */
-    if (url.pathname === '/' && request.method === 'GET') {
+    if (url.pathname === '/' &amp;&amp; request.method === 'GET') {
         // Generating the form if the relative URL is '/', and the GET method was used to send data to the server'
         /* ************************************************** */
         // Creating an answer header — we inform the browser that the returned data is HTML
@@ -57,38 +85,38 @@ function requestListener(request, response) {
         /* ************************************************** */
         // Setting a response body
         response.write(`
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Web Page</title>
-  </head>
-  <body>
-  <h1>My Web Page</h1>
-    <form method="GET" action="/submit">
-      <label for="dropdown">Choose an option:</label>
-      <select id="dropdown" name="option">
-        <option value="---">---</option>
-        <option value="sync">Sync</option>
-        <option value="async">Async</option>
-      </select>
-      <br>
-      <label for="textbox">Enter command (text):</label>
-      <input type="text" id="textbox" name="text">
-      <br>
-      <input type="submit" value="Submit">
-      <input type="reset" value="Reset">
-    </form>
-  </body>
-</html>`);
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+    &lt;title>My Web Page&lt;/title>
+  &lt;/head>
+  &lt;body>
+  &lt;h1>My Web Page&lt;/h1>
+    &lt;form method="GET" action="/submit">
+      &lt;label for="dropdown">Choose an option:&lt;/label>
+      &lt;select id="dropdown" name="option">
+        &lt;option value="---">---&lt;/option>
+        &lt;option value="sync">Sync&lt;/option>
+        &lt;option value="async">Async&lt;/option>
+      &lt;/select>
+      &lt;br>
+      &lt;label for="textbox">Enter command (text):&lt;/label>
+      &lt;input type="text" id="textbox" name="text">
+      &lt;br>
+      &lt;input type="submit" value="Submit">
+      &lt;input type="reset" value="Reset">
+    &lt;/form>
+  &lt;/body>
+&lt;/html>`);
         /* ************************************************** */
         response.end(); // The end of the response — send it to the browser
     }
     /* ---------------------- */
     /* Route "GET('/submit')" */
     /* ---------------------- */
-    else if (url.pathname === '/submit' && request.method === 'GET') {
+    else if (url.pathname === '/submit' &amp;&amp; request.method === 'GET') {
         // Processing the form content, if the relative URL is '/submit', and the GET method was used to send data to the server'
         /* ************************************************** */
         if (url.searchParams.get('option') === 'sync') {
@@ -144,17 +172,17 @@ console.log('To stop the server, press "CTRL + C"');
 function writeHTMLResponseCounter(response, counterValue) {
   response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
   response.write(`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Liczba uruchomien</title>
-</head>
-<body>
-  <h1>Liczba uruchomien: ${counterValue}</h1>
-</body>
-</html>`);
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+  &lt;meta charset="utf-8">
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+  &lt;title>Liczba uruchomien&lt;/title>
+&lt;/head>
+&lt;body>
+  &lt;h1>Liczba uruchomien: ${counterValue}&lt;/h1>
+&lt;/body>
+&lt;/html>`);
   response.end();
 }
 
@@ -164,3 +192,26 @@ function writeTextResponse(response, text) {
   response.write(text);
   response.end();
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-console_script2.html">console_script2</a></li><li><a href="module-server_script2.html">server_script2</a></li></ul><h3>Global</h3><ul><li><a href="global.html#requestListener">requestListener</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Sep 02 2023 07:47:58 GMT+0200 (czas środkowoeuropejski letni)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
