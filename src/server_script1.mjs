@@ -2,6 +2,7 @@
 // const { URL } = require('node:url');
 import http from 'node:http';
 import { URL } from 'node:url';
+
 /**
      * Handles incoming requests.
      *
@@ -75,6 +76,36 @@ function requestListener(request, response) {
         response.write(`Hello ${url.searchParams.get('name')}`); // "url.searchParams.get('name')" contains the contents of the field (form) named 'name'
         /* ************************************************** */
         response.end(); // The end of the response — send it to the browser
+    }
+    /* ---------------------- */
+    /* Route "POST('/')" */
+    /* ---------------------- */
+    else if (url.pathname === '/' && request.method === 'POST') {
+      // Processing the form content, if the relative URL is '/', and the POST  method was used to send data to the server'
+
+      // Extract name param from POST - not easy
+      let postData = '';
+
+      request.on('data', (chunk) => {
+        postData += chunk;
+      });
+
+      request.on('end', () => {
+        const formData = new URLSearchParams(postData);
+
+        // Retrieving the 'name' field from the form data
+        const name = formData.get('name');
+        // const name = "Ala";
+
+        /* ************************************************** */
+        // Creating an answer header — we inform the browser that the returned data is plain text
+        response.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+        /* ************************************************** */
+        // Place given data (here: 'Hello <name>') in the body of the answer
+        response.write(`Hello ${name}`); // "url.searchParams.get('name')" contains the contents of the field (form) named 'name'
+        /* ************************************************** */
+        response.end(); // The end of the response — send it to the browser
+      });
     }
     /* -------------------------- */
     /* If no route is implemented */
