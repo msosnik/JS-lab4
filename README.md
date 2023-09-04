@@ -2,9 +2,9 @@
 JavaScript course at AGH lab 4
 
 ## Overview
-This project contains node.js server/console application. It shows file read/write in sync and async way
+This project contains node.js server and console applications. It shows file read/write in sync and async way
 
-## Packages and Tools
+## Required Packages and Tools
 To run the project in VS Code, you will need following packages:
 - fs-extra
 
