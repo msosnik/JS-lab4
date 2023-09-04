@@ -8,7 +8,7 @@ This project contains node.js server/console application. It shows file read/wri
 To run the project in VS Code, you will need following packages:
 - fs-extra
 
-    npm install fs-extra
+        npm install fs-extra
 
 ## Console Application
 Start the console application from command-line:
@@ -78,13 +78,13 @@ To run tests supertest package is required.
 ## Optional Tools
 - Code Runner
 
-    code --install-extension formulahendry.code-runner
+        code --install-extension formulahendry.code-runner
 
 - eslint
 
-    code --install-extension dbaeumer.vscode-eslint # installation
-    npm init @eslint/config # configuration
+        code --install-extension dbaeumer.vscode-eslint # installation
+        npm init @eslint/config # configuration
 
-    npx eslint --fix 'src/*.js' # execution
-    npx jsdoc src --verbose # jsdoc generation
+        npx eslint --fix 'src/*.js' # execution
+        npx jsdoc src --verbose # jsdoc generation
 
